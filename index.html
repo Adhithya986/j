@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>workspace - Java - Java_Lab_Record/src/lab/experiments/ForDemo.java - Eclipse IDE</title>
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%232C2255'/%3E%3Cpath d='M4 12h24M2 16h28M4 20h24' stroke='%23F58025' stroke-width='2.5' stroke-linecap='round'/%3E%3Ccircle cx='16' cy='16' r='8' fill='%23FDB813'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="eclipse.css">
+</head>
+<body>
+
+<div id="eclipse-workbench">
+
+  <!-- ======================================================================
+       Eclipse Window Title Bar (Windows / Native Eclipse Look)
+       ====================================================================== -->
+  <div class="eclipse-titlebar">
+    <div class="titlebar-left">
+      <svg class="titlebar-icon" viewBox="0 0 32 32">
+        <circle cx="16" cy="16" r="15" fill="#2C2255"/>
+        <path d="M4 12h24M2 16h28M4 20h24" stroke="#F58025" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="8" fill="#FDB813"/>
+      </svg>
+      <span class="titlebar-title" id="workbench-title">workspace - Java - Java_Lab_Record/src/lab/experiments/ForDemo.java - Eclipse IDE</span>
+    </div>
+    <div class="titlebar-right">
+      <div class="window-controls">
+        <button class="win-btn" id="win-btn-min" title="Minimize">─</button>
+        <button class="win-btn" id="win-btn-max" title="Maximize / Toggle Fullscreen (F11)">□</button>
+        <button class="win-btn close" id="win-btn-close" title="Close">✕</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Eclipse Menu Bar
+       ====================================================================== -->
+  <div class="eclipse-menubar">
+    <div class="menu-item" data-menu="file">
+      File
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="openSearchModal()"><span>New Class...</span> <span class="shortcut">Ctrl+N</span></div>
+        <div class="menu-dropdown-item" onclick="openSearchModal()"><span>Open Resource...</span> <span class="shortcut">Ctrl+Shift+R</span></div>
+        <div class="menu-divider"></div>
+        <div class="menu-dropdown-item" onclick="showToast('File saved to workspace.', 'info')"><span>Save</span> <span class="shortcut">Ctrl+S</span></div>
+        <div class="menu-dropdown-item" onclick="showToast('All files saved.', 'info')"><span>Save All</span> <span class="shortcut">Ctrl+Shift+S</span></div>
+        <div class="menu-dropdown-item" onclick="downloadCurrentFile()"><span>Export .java File...</span></div>
+        <div class="menu-divider"></div>
+        <div class="menu-dropdown-item" onclick="window.close()"><span>Exit</span> <span class="shortcut">Alt+F4</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="edit">
+      Edit
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="copyCurrentProgram()"><span>Copy Code</span> <span class="shortcut">Alt+C</span></div>
+        <div class="menu-dropdown-item" onclick="copyCurrentProgram()"><span>Select All & Copy</span> <span class="shortcut">Ctrl+A</span></div>
+        <div class="menu-divider"></div>
+        <div class="menu-dropdown-item" onclick="openSearchModal()"><span>Find / Replace...</span> <span class="shortcut">Ctrl+F</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="source">
+      Source
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="showToast('Code already auto-formatted.', 'info')"><span>Format</span> <span class="shortcut">Ctrl+Shift+F</span></div>
+        <div class="menu-dropdown-item" onclick="showToast('Imports are organized.', 'info')"><span>Organize Imports</span> <span class="shortcut">Ctrl+Shift+O</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="refactor">
+      Refactor
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="showToast('Rename refactoring ready.', 'info')"><span>Rename...</span> <span class="shortcut">Alt+Shift+R</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="navigate">
+      Navigate
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="openSearchModal()"><span>Open Type...</span> <span class="shortcut">Ctrl+Shift+T</span></div>
+        <div class="menu-dropdown-item" onclick="openSearchModal()"><span>Open Resource...</span> <span class="shortcut">Ctrl+Shift+R</span></div>
+        <div class="menu-dropdown-item" onclick="document.getElementById('quick-access-input').focus()"><span>Quick Access...</span> <span class="shortcut">Ctrl+3</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="search">
+      Search
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="openSearchModal()"><span>Search Java Elements...</span> <span class="shortcut">Ctrl+H</span></div>
+        <div class="menu-dropdown-item" onclick="openSearchModal()"><span>File Search...</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="project">
+      Project
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="showToast('Building workspace... 0 errors found.', 'success')"><span>Build All</span> <span class="shortcut">Ctrl+B</span></div>
+        <div class="menu-dropdown-item" onclick="showToast('Workspace cleaned and rebuilt.', 'info')"><span>Clean...</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="run">
+      Run
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="runCurrentProgram()"><span>Run As Java Application</span> <span class="shortcut">Ctrl+F11</span></div>
+        <div class="menu-dropdown-item" onclick="debugCurrentProgram()"><span>Debug As Java Application</span> <span class="shortcut">F11</span></div>
+        <div class="menu-divider"></div>
+        <div class="menu-dropdown-item" onclick="runCurrentProgram()"><span>Run Configurations...</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="window">
+      Window
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="toggleTheme()"><span>Toggle Theme (Dark / Light)</span></div>
+        <div class="menu-dropdown-item" onclick="toggleFullscreen()"><span>Toggle Fullscreen (Stealth)</span> <span class="shortcut">F11</span></div>
+        <div class="menu-dropdown-item" onclick="toggleRightSidebar()"><span>Toggle Outline View</span></div>
+        <div class="menu-divider"></div>
+        <div class="menu-dropdown-item" onclick="toggleTheme()"><span>Preferences...</span></div>
+      </div>
+    </div>
+
+    <div class="menu-item" data-menu="help">
+      Help
+      <div class="menu-dropdown">
+        <div class="menu-dropdown-item" onclick="showAboutModal()"><span>About Eclipse IDE</span></div>
+        <div class="menu-dropdown-item" onclick="showToast('Antigravity Eclipse Java Workspace v2024-03', 'info')"><span>Check for Updates</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Eclipse Main Toolbar
+       ====================================================================== -->
+  <div class="eclipse-toolbar">
+    <div class="toolbar-left">
+      <!-- New File -->
+      <button class="tb-btn" onclick="openSearchModal()" title="New Java Class (Ctrl+N)">
+        <svg viewBox="0 0 16 16"><path fill="#4caf50" d="M1 2h10v12H1z"/><path fill="#fff" d="M4 8h4M6 6v4"/></svg>
+      </button>
+      <!-- Save -->
+      <button class="tb-btn" id="tb-save-btn" title="Save (Ctrl+S)">
+        <svg viewBox="0 0 16 16"><path fill="#1976d2" d="M2 1h10l3 3v11H2V1zm2 1v4h7V2H4zm1 7v5h6V9H5z"/></svg>
+      </button>
+      <!-- Save All -->
+      <button class="tb-btn" onclick="showToast('All resources saved.', 'info')" title="Save All (Ctrl+Shift+S)">
+        <svg viewBox="0 0 16 16"><path fill="#1565c0" d="M1 3h8l2 2v9H1V3z"/><path fill="#42a5f5" d="M4 1h8l3 3v10H4V1z"/></svg>
+      </button>
+
+      <div class="tb-separator"></div>
+
+      <!-- Debug Button -->
+      <button class="tb-btn debug-btn" id="tb-debug-btn" title="Debug As Java Application (F11)">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#e53935"/><path fill="#fff" d="M8 3a2 2 0 00-2 2v1h4V5a2 2 0 00-2-2zm-3 4h6v3a3 3 0 01-6 0V7zm-2 1h1m8 0h1m-10 2h1m8 0h1"/></svg>
+      </button>
+
+      <!-- Run Button -->
+      <button class="tb-btn run-btn" id="tb-run-btn" title="Run As Java Application (Ctrl+F11)">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="#43a047"/><path fill="#fff" d="M6.5 4.5v7l5-3.5z"/></svg>
+      </button>
+
+      <div class="tb-separator"></div>
+
+      <!-- Search Dialog Button (Flashlight) -->
+      <button class="tb-btn" id="tb-search-btn" title="Search Java Programs / Open Resource (Ctrl+Shift+R or Ctrl+H)">
+        <svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="2" d="M6.5 11a4.5 4.5 0 100-9 4.5 4.5 0 000 9zm3.5-1.5l4 4"/></svg>
+      </button>
+
+      <!-- Prominent Quick Copy Button in Toolbar -->
+      <button class="tb-btn copy-highlight" onclick="copyCurrentProgram()" title="Copy active Java program to clipboard (Alt+C)">
+        <svg viewBox="0 0 16 16" style="width: 13px; height: 13px;"><path fill="currentColor" d="M4 2h7a1 1 0 011 1v1H4V2z"/><rect x="4" y="4" width="9" height="10" rx="1" fill="currentColor" fill-opacity="0.3"/><rect x="2" y="2" width="9" height="10" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+        <span>Copy Code</span>
+      </button>
+
+      <!-- Fullscreen / Stealth Toggle -->
+      <button class="tb-btn" id="tb-fullscreen-toggle" title="Toggle Fullscreen Stealth Mode (F11)">
+        <svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M2 6V2h4m4 0h4v4m0 4v4h-4m-4 0H2v-4"/></svg>
+      </button>
+
+      <!-- Theme Switcher -->
+      <button class="tb-btn" id="tb-theme-toggle" title="Toggle Eclipse Theme (Dark / Light)">
+        <svg viewBox="0 0 16 16"><circle cx="8" cy="8" r="4" fill="currentColor"/><path stroke="currentColor" stroke-width="1.5" d="M8 1v2m0 10v2M1 8h2m10 0h2"/></svg>
+      </button>
+    </div>
+
+    <!-- Quick Access Search Bar & Perspective Switcher -->
+    <div class="toolbar-right">
+      <div class="quick-access-box">
+        <svg class="quick-access-icon" viewBox="0 0 16 16">
+          <path fill="none" stroke="currentColor" stroke-width="2" d="M6.5 11a4.5 4.5 0 100-9 4.5 4.5 0 000 9zm3.5-1.5l4 4"/>
+        </svg>
+        <input type="text" class="quick-access-input" id="quick-access-input" placeholder="Quick Access (Ctrl+3: Search programs...)" autocomplete="off">
+        <div class="quick-access-dropdown" id="quick-access-dropdown"></div>
+      </div>
+
+      <div class="perspective-switcher">
+        <button class="persp-btn active" title="Java Perspective">
+          <svg style="width: 14px; height: 14px;" viewBox="0 0 16 16"><path fill="#f58025" d="M5 2c0 2 2 3 2 4s-1 2-1 3c2-1 3-3 3-4s-2-2-2-3zm4 2c0 1 1 2 1 3s-1 2-1 3c2-1 2-2 2-3s-1-2-1-3z"/><path fill="#0288d1" d="M2 12c2 1 8 1 10 0 1-1 0-2 0-2H2s-1 1 0 2z"/></svg>
+          <span>Java</span>
+        </button>
+        <button class="persp-btn" title="Debug Perspective" onclick="debugCurrentProgram()">
+          <svg style="width: 14px; height: 14px;" viewBox="0 0 16 16"><circle cx="8" cy="8" r="5" fill="#e53935"/></svg>
+          <span>Debug</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ======================================================================
+       Workbench Body Panels
+       ====================================================================== -->
+  <div class="workbench-body">
+
+    <!-- Left Panel: Package Explorer -->
+    <div class="sidebar-panel">
+      <div class="panel-header">
+        <div class="panel-header-title">
+          <svg style="width: 14px; height: 14px;" viewBox="0 0 16 16"><path fill="#1e88e5" d="M1 3h5l2 2h7v9H1z"/></svg>
+          <span>Package Explorer</span>
+        </div>
+        <div class="panel-actions">
+          <button class="panel-action-btn" onclick="openSearchModal()" title="Search in Package Explorer">
+            <svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="2" d="M6.5 11a4.5 4.5 0 100-9 4.5 4.5 0 000 9zm3.5-1.5l4 4"/></svg>
+          </button>
+          <button class="panel-action-btn" onclick="buildPackageExplorer(window.JAVA_PROGRAMS)" title="Refresh Tree">
+            <svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.8" d="M13.5 8a5.5 5.5 0 11-1.6-3.9L14 2m0 4h-4"/></svg>
+          </button>
+          <button class="panel-action-btn" onclick="toggleRightSidebar()" title="Toggle Outline / Cheat Sheet">
+            <svg viewBox="0 0 16 16"><circle cx="8" cy="3" r="1.5" fill="currentColor"/><circle cx="8" cy="8" r="1.5" fill="currentColor"/><circle cx="8" cy="13" r="1.5" fill="currentColor"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- Filter text input -->
+      <div class="package-filter-box">
+        <input type="text" class="filter-input" id="package-filter-input" placeholder="type filter text (e.g. palindrome, jdbc, swing...)">
+      </div>
+
+      <!-- Tree container -->
+      <div class="tree-container" id="package-tree"></div>
+
+      <!-- Resizer Handle -->
+      <div class="resizer"></div>
+    </div>
+
+    <!-- Center Area: Editor + Bottom Panels -->
+    <div class="editor-main-area">
+
+      <!-- Editor Tab Bar -->
+      <div class="editor-tabs-bar" id="editor-tabs"></div>
+
+      <!-- Editor Sub-Header (Breadcrumb & Action Bar) -->
+      <div class="editor-sub-header">
+        <div class="breadcrumbs" id="breadcrumbs-bar"></div>
+
+        <div class="editor-actions">
+          <!-- Big Prominent Copy Button -->
+          <button class="copy-code-btn" id="editor-copy-btn" onclick="copyCurrentProgram()" title="Copy complete Java source code to clipboard (Alt+C)">
+            <svg viewBox="0 0 16 16"><path fill="currentColor" d="M4 2h7a1 1 0 011 1v1H4V2z"/><rect x="4" y="4" width="9" height="10" rx="1" fill="currentColor" fill-opacity="0.3"/><rect x="2" y="2" width="9" height="10" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            <span>Copy Code</span>
+          </button>
+
+          <!-- Run Button -->
+          <button class="action-btn" onclick="runCurrentProgram()" title="Run Program (Ctrl+F11)">
+            <svg style="width: 13px; height: 13px;" viewBox="0 0 16 16"><polygon points="4,2 14,8 4,14" fill="#43a047"/></svg>
+            <span>Run</span>
+          </button>
+
+          <!-- Download Button -->
+          <button class="action-btn" onclick="downloadCurrentFile()" title="Download .java file">
+            <svg style="width: 13px; height: 13px;" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M8 2v8m-3-3l3 3 3-3M2 13h12"/></svg>
+            <span>Save .java</span>
+          </button>
+
+          <!-- Search in Code -->
+          <button class="action-btn" onclick="openSearchModal()" title="Search programs (Ctrl+Shift+R)">
+            <svg style="width: 13px; height: 13px;" viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="2" d="M6 10a4 4 0 100-8 4 4 0 000 8zm3-1l3 3"/></svg>
+            <span>Search</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Code Container (Gutter + Code Area) -->
+      <div class="editor-code-container">
+        <div class="code-gutter" id="code-gutter"></div>
+        <div class="code-content-wrapper" id="code-content"></div>
+      </div>
+
+      <!-- Bottom Panel (Console, Problems, Javadoc, Terminal) -->
+      <div class="bottom-view-panel">
+        <div class="resizer-horizontal"></div>
+
+        <div class="bottom-tabs-header">
+          <div class="bottom-tabs">
+            <div class="bottom-tab active" data-tab="console">
+              <svg style="width: 12px; height: 12px;" viewBox="0 0 16 16"><rect x="1" y="2" width="14" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 6l3 2-3 2M9 10h3" stroke="currentColor" stroke-width="1.5"/></svg>
+              <span>Console</span>
+            </div>
+            <div class="bottom-tab" data-tab="problems">
+              <svg style="width: 12px; height: 12px;" viewBox="0 0 16 16"><circle cx="8" cy="8" r="7" fill="none" stroke="#4caf50" stroke-width="1.5"/><path d="M5 8l2 2 4-4" stroke="#4caf50" stroke-width="1.5" fill="none"/></svg>
+              <span>Problems (0 errors, 0 warnings)</span>
+            </div>
+            <div class="bottom-tab" data-tab="javadoc">
+              <svg style="width: 12px; height: 12px;" viewBox="0 0 16 16"><path fill="currentColor" d="M3 2h10v12H3z"/><path fill="#fff" d="M5 5h6v1H5zm0 3h6v1H5zm0 3h4v1H5z"/></svg>
+              <span>Javadoc / Question Info</span>
+            </div>
+            <div class="bottom-tab" data-tab="terminal">
+              <svg style="width: 12px; height: 12px;" viewBox="0 0 16 16"><path stroke="currentColor" stroke-width="1.5" d="M2 3h12v10H2zM4 6l2 2-2 2"/></svg>
+              <span>Terminal</span>
+            </div>
+          </div>
+
+          <div class="bottom-actions">
+            <button class="panel-action-btn" onclick="copyConsoleOutput()" title="Copy Console Output">
+              <svg viewBox="0 0 16 16"><path fill="currentColor" d="M4 2h7a1 1 0 011 1v1H4V2z"/><rect x="4" y="4" width="9" height="10" rx="1" fill="currentColor" fill-opacity="0.3"/><rect x="2" y="2" width="9" height="10" rx="1" stroke="currentColor" stroke-width="1.5" fill="none"/></svg>
+            </button>
+            <button class="panel-action-btn" onclick="clearConsole()" title="Clear Console">
+              <svg viewBox="0 0 16 16"><path fill="none" stroke="currentColor" stroke-width="1.5" d="M3 3l10 10m0-10L3 13"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <!-- Tab Contents -->
+        <div class="console-body bottom-view-content" data-tab-content="console" id="console-output"></div>
+
+        <div class="javadoc-body bottom-view-content" data-tab-content="problems" style="display: none;">
+          <div style="color: #4caf50; font-weight: 600; margin-bottom: 8px;">✓ 0 Errors, 0 Warnings, 0 Infos</div>
+          <table style="width: 100%; border-collapse: collapse; font-size: 11px;">
+            <thead>
+              <tr style="border-bottom: 1px solid var(--sidebar-border); text-align: left; color: var(--sidebar-text-muted);">
+                <th style="padding: 4px;">Description</th>
+                <th style="padding: 4px;">Resource</th>
+                <th style="padding: 4px;">Path</th>
+                <th style="padding: 4px;">Location</th>
+                <th style="padding: 4px;">Type</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding: 6px; color: var(--sidebar-text-muted);" colspan="5">No problems in current workspace. All Java compilation units compiled cleanly.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="javadoc-body bottom-view-content" data-tab-content="javadoc" id="javadoc-content" style="display: none;"></div>
+
+        <div class="console-body bottom-view-content" data-tab-content="terminal" style="display: none; background: #121212; color: #a5d6a7;">
+          <div>Microsoft Windows [Version 10.0.26100.3194]</div>
+          <div>(c) Microsoft Corporation. All rights reserved.</div>
+          <br>
+          <div>C:\Users\Student\eclipse-workspace\College_Projects&gt; java -version</div>
+          <div style="color: #ffffff;">java version "17.0.10" 2024-01-16 LTS</div>
+          <div style="color: #ffffff;">Java(TM) SE Runtime Environment (build 17.0.10+11-LTS-240)</div>
+          <div style="color: #ffffff;">Java HotSpot(TM) 64-Bit Server VM (build 17.0.10+11-LTS-240, mixed mode, sharing)</div>
+          <br>
+          <div>C:\Users\Student\eclipse-workspace\College_Projects&gt; <span style="animation: blink 1s infinite;">_</span></div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Right Collapsible Panel: Outline & Cheat Sheet -->
+    <div class="sidebar-panel" id="right-sidebar-panel" style="width: 250px; border-left: 1px solid var(--sidebar-border); border-right: none; display: flex;">
+      <div class="panel-header">
+        <div class="panel-header-title">
+          <svg style="width: 14px; height: 14px;" viewBox="0 0 16 16"><path fill="#fbc02d" d="M2 3h12v2H2zm0 4h8v2H2zm0 4h10v2H2z"/></svg>
+          <span>Outline</span>
+        </div>
+        <div class="panel-actions">
+          <button class="panel-action-btn" onclick="toggleRightSidebar()" title="Close Outline">✕</button>
+        </div>
+      </div>
+      <div class="tree-container" id="outline-content" style="padding: 6px 0;"></div>
+
+      <!-- Quick Revision Guide Box at Bottom of Outline -->
+      <div style="padding: 8px 10px; background: var(--sidebar-header); border-top: 1px solid var(--sidebar-border); font-size: 11px;">
+        <div style="font-weight: 600; color: #ffb74d; margin-bottom: 4px;">⚡ Quick Exam Concepts</div>
+        <div style="font-size: 10px; color: var(--sidebar-text-muted); line-height: 1.4;">
+          • <strong>Abstract:</strong> <code>abstract</code> class/method<br>
+          • <strong>Inheritance:</strong> <code>extends</code> single/multi<br>
+          • <strong>Interface:</strong> <code>implements</code> multiple<br>
+          • <strong>Exception:</strong> <code>try</code>, <code>catch</code>, <code>finally</code>, <code>throw</code>, <code>throws</code><br>
+          • <strong>JDBC:</strong> <code>DriverManager</code>, <code>Statement</code>, <code>ResultSet</code>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ======================================================================
+       Status Bar (Bottom)
+       ====================================================================== -->
+  <div class="eclipse-statusbar">
+    <div class="statusbar-left">
+      <div class="statusbar-item" id="status-msg">Ready</div>
+      <div class="statusbar-item" id="status-file-count">44 Java Files Available</div>
+    </div>
+    <div class="statusbar-right">
+      <div class="statusbar-item">Writable</div>
+      <div class="statusbar-item">Smart Insert</div>
+      <div class="statusbar-item">UTF-8</div>
+      <div class="statusbar-item">JavaSE-17</div>
+      <div class="statusbar-item" title="Click to trigger Garbage Collection" onclick="showToast('Garbage collection completed. Freed 42MB heap.', 'info')">
+        <span>Heap: 184M of 512M</span>
+        <svg style="width: 12px; height: 12px; margin-left: 2px;" viewBox="0 0 16 16"><path fill="currentColor" d="M3 4h10v1H3zm2 2h6v8H5zm2-4h2v1H7z"/></svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- ========================================================================
+     Search Dialog Modal (Ctrl+Shift+R / Ctrl+H / Flashlight)
+     ======================================================================== -->
+<div class="modal-overlay" id="search-modal">
+  <div class="eclipse-modal">
+    <div class="modal-header">
+      <span>Open Resource / Search Java Elements (Ctrl+Shift+R)</span>
+      <button class="panel-action-btn" onclick="closeSearchModal()" style="font-size: 14px;">✕</button>
+    </div>
+    <div class="modal-body">
+      <label style="font-size: 11px; color: var(--sidebar-text-muted);">Select an item to open (? = any character, * = any string):</label>
+      <input type="text" class="modal-search-input" id="modal-search-input" placeholder="Type filename, class, or keyword (e.g., Armstrong, Palindrome, Calculator, JDBC...)" autofocus>
+      <div style="font-size: 11px; font-weight: 600; color: var(--sidebar-text-muted); margin-top: 4px;">Matching items:</div>
+      <div class="modal-results-list" id="modal-results-list"></div>
+    </div>
+    <div class="modal-footer">
+      <button class="action-btn" id="modal-cancel-btn">Cancel</button>
+      <button class="copy-code-btn" id="modal-open-btn">Open in Editor</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================
+     About Eclipse IDE Modal
+     ======================================================================== -->
+<div class="modal-overlay" id="about-modal">
+  <div class="eclipse-modal" style="width: 460px;">
+    <div class="modal-header">
+      <span>About Eclipse IDE</span>
+      <button class="panel-action-btn" onclick="document.getElementById('about-modal').classList.remove('open')">✕</button>
+    </div>
+    <div class="modal-body" style="padding: 20px; text-align: center;">
+      <svg style="width: 54px; height: 54px; margin-bottom: 12px;" viewBox="0 0 32 32">
+        <circle cx="16" cy="16" r="15" fill="#2C2255"/>
+        <path d="M4 12h24M2 16h28M4 20h24" stroke="#F58025" stroke-width="2.5" stroke-linecap="round"/>
+        <circle cx="16" cy="16" r="8" fill="#FDB813"/>
+      </svg>
+      <h2 style="font-size: 16px; margin-bottom: 4px;">Eclipse IDE for Java Developers</h2>
+      <div style="font-size: 12px; color: var(--sidebar-text-muted); margin-bottom: 14px;">Version: 2024-03 (4.31.0) | Build id: 20240307-1437</div>
+      <p style="font-size: 11.5px; color: var(--sidebar-text); line-height: 1.5; margin-bottom: 14px;">
+        Java Programming Lab Record & Exam Solutions Suite.<br>
+        Contains 44 full compilable Java programs, JDBC CRUD operations, and OOP references.
+      </p>
+      <div style="font-size: 11px; color: #4fc3f7; background: rgba(0, 122, 204, 0.15); padding: 8px; border-radius: 4px;">
+        Press <strong>Alt+C</strong> or click <strong>Copy Code</strong> to instantly copy any program.
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="copy-code-btn" onclick="document.getElementById('about-modal').classList.remove('open')">Close</button>
+    </div>
+  </div>
+</div>
+
+<!-- ========================================================================
+     Toast Notification Popup
+     ======================================================================== -->
+<div class="eclipse-toast" id="eclipse-toast"></div>
+
+<!-- Scripts -->
+<script src="programs_data.js"></script>
+<script src="eclipse.js"></script>
+<script>
+  function showAboutModal() {
+    document.getElementById('about-modal').classList.add('open');
+  }
+</script>
+
+</body>
+</html>
+

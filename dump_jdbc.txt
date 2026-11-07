@@ -1,0 +1,101 @@
+=== PAGE 1 ===
+JDBC Quick Reference Guide
+Complete Java Database Connectivity (JDBC) CRUD Operations Reference
+CREATE Create Table Operation
+import java.sql.*;
+class CreateTable {
+public static void main(String[] args) throws Exception {
+        Connection con = DriverManager.getConnection(
+"jdbc:mysql://localhost:3306/college",
+"root", "password");
+        Statement st = con.createStatement();
+        st.executeUpdate(
+"CREATE TABLE student (id INT, name VARCHAR(30))");
+        System.out.println("Table created");
+        con.close();
+    }
+}
+INSERT Insert Record Operation
+import java.sql.*;
+class InsertData {
+public static void main(String[] args) throws Exception {
+        Connection con = DriverManager.getConnection(
+"jdbc:mysql://localhost:3306/college",
+"root", "password");
+        Statement st = con.createStatement();
+        st.executeUpdate(
+"INSERT INTO student VALUES (1, 'Ravi')");
+        System.out.println("Record inserted");
+        con.close();
+    }
+}
+JDBC CRUD Operations Cheat Sheet Page 1 of 3
+
+=== PAGE 2 ===
+SELECT Read / Query Data Operation
+import java.sql.*;
+class SelectData {
+public static void main(String[] args) throws Exception {
+        Connection con = DriverManager.getConnection(
+"jdbc:mysql://localhost:3306/college",
+"root", "password");
+        Statement st = con.createStatement();
+        ResultSet rs = st.executeQuery(
+"SELECT * FROM student");
+while (rs.next()) {
+            System.out.println(
+                rs.getInt("id") + " " +
+                rs.getString("name"));
+        }
+        con.close();
+    }
+}
+UPDATE Update Record Operation
+import java.sql.*;
+class UpdateData {
+public static void main(String[] args) throws Exception {
+        Connection con = DriverManager.getConnection(
+"jdbc:mysql://localhost:3306/college",
+"root", "password");
+        Statement st = con.createStatement();
+int rows = st.executeUpdate(
+"UPDATE student SET name = 'Surya' WHERE id = 1");
+if (rows > 0) {
+            System.out.println("Record updated successfully!");
+        } else {
+            System.out.println("No record found.");
+        }
+        st.close();
+        con.close();
+    }
+}
+JDBC CRUD Operations Cheat Sheet Page 2 of 3
+
+=== PAGE 3 ===
+DELETE Delete Record Operation (PreparedStatement)
+import java.sql.*;
+import java.util.Scanner;
+class DeleteData {
+public static void main(String[] args) throws Exception {
+        Connection con = DriverManager.getConnection(
+"jdbc:mysql://localhost:3306/college",
+"root", "password");
+        Scanner sc = new Scanner(System.in);
+        System.out.print("Enter student ID to delete: ");
+int id = sc.nextInt();
+        PreparedStatement ps = con.prepareStatement(
+"DELETE FROM student WHERE id = ?");
+        ps.setInt(1, id);
+int rows = ps.executeUpdate();
+if (rows > 0) {
+            System.out.println("Student deleted successfully.");
+        } else {
+            System.out.println("Student ID not found.");
+        }
+        ps.close();
+        con.close();
+        sc.close();
+    }
+}
+JDBC CRUD Operations Cheat Sheet Page 3 of 3
+
